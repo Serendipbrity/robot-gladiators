@@ -7,10 +7,10 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-//console.log(enemyNames);
-//console.log(enemyNames.length);
-//console.log(enemyNames[0]);
-//console.log(enemyNames[3]);
+console.log(enemyNames);
+console.log(enemyNames.length);
+console.log(enemyNames[0]);
+console.log(enemyNames[3]);
 
 
 var fight = function(enemyName) {
@@ -56,7 +56,8 @@ var fight = function(enemyName) {
      playerHealth = playerHealth - enemyAttack;
      // Log a resulting message to the console so we know that it worked
      console.log(
-         enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+         enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
+         );
    
     // check player's health
     if (playerHealth <= 0) {
@@ -71,26 +72,28 @@ var fight = function(enemyName) {
           
   
 
-       
-
-    
-    // if player chooses to skip
-     
-    // if no (false) ask question again by running fight() again
-   /* else {
-        fight();
-    }     
-    } else {
-        window.alert("You need to choose a valid option. Try again!");
-    }
-  }  
-}; */
-// run fight function to start the game
+// fight enemy ronots by looping over them and fighting them one at a time
 for (var i = 0; i < enemyNames.length; i++) {
+    // if player is still alive keep fighting
+if (playerHealth > 0) {
+    // lets player know what round they are in
+    window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
+
+    // pick new enemy to fight based on index of enemy array
     var pickedEnemyName = enemyNames[i];
+
+    // reset enemyHealth before starting new fight
     enemyHealth = 50;
+
+    //debugger;
+
+    // pass the pickedEnemyName variable into the fight function where it will assume the value of the enemyName parameter
     fight(pickedEnemyName);
 }
+// if player isnt alive, stop game
+   else {
+       window.alert("You have lost your robot in this battle! Game Over!")
+       break;
+   }
+}
 
-
-//Game States
