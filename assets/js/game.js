@@ -29,11 +29,19 @@ var fightOrSkip = function(){
     return false;
 };
 
+
 // fight function with parameter for enemys name
 var fight = function(enemy) {
+
+         // keep track of who goes first 50/50 chance
+        var isPlayerTurn = true; 
+        if (Math.random() > 0.5){
+            isPlayerTurn = false;
+        }
     
   while(playerInfo.health > 0 && enemy.health > 0){
-       if (fightOrSkip()){
+       if (isPlayerTurn){
+           if (fightOrSkip()) {
            break;
        }
     
@@ -70,8 +78,10 @@ var fight = function(enemy) {
     } else {
         window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
     }
-  } // end of while loop
-};  // end of fight function 
+  } 
+  isPlayerTurn = !isPlayerTurn;
+  }
+}; 
           
   // function to start a new game
 var startGame = function(){ 
